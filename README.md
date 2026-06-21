@@ -49,3 +49,40 @@ due to random chance.
 **Recommendation:** Scale Version B as the primary creative across 
 similar campaigns. The minimal design approach outperformed the bold 
 design by nearly 2x in click-through rate.
+
+
+## Module 2: Ad Campaign & Marketing Analytics
+
+Simulated a realistic ad funnel (impressions → clicks → purchases) across 
+10 campaigns spanning 4 channels (Search, Influencer, Email, Banner), with 
+ad-driven purchases linked directly to real transaction records for 
+accurate revenue attribution.
+
+### Key Findings
+
+**1. Channel performance varies dramatically**
+- Search and Influencer campaigns deliver the strongest ROAS (2.6x–4.4x)
+- Every Banner campaign has ROAS below 1.0 — actively losing money
+- Email sits near breakeven (~1.5x)
+
+**2. A/B Test: Creative Design (Monsoon Sale Campaign)**
+- Version B (Minimal design): 3.57% CTR
+- Version A (Bold design): 1.92% CTR
+- Confirmed statistically significant via two-proportion z-test 
+  (p < 0.0001) — not due to chance
+
+**3. Channel matters more than creative**
+- Even the "winning" A/B variant (Version B) remained unprofitable 
+  (ROAS 0.96) because it was still a Banner campaign — reinforcing 
+  that channel selection is a bigger lever than ad creative
+
+### Recommendation
+Reallocate the ₹255,000 currently spent on underperforming Banner 
+campaigns toward Search and Influencer channels, which show 2-4x 
+better returns.
+
+### Visuals
+![CTR by Campaign](visuals/5_ctr_by_campaign.png)
+![ROAS by Campaign](visuals/6_roas_by_campaign.png)
+![Overall Funnel](visuals/7_overall_funnel.png)
+![A/B Test Result](visuals/8_ab_test_result.png)
