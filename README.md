@@ -35,3 +35,17 @@ retention (68-85%) due to small sample size — these cohorts have very
 few customers, so individual repeat purchases swing the percentage 
 heavily. Cohorts with fewer than ~30 customers were excluded from 
 trend conclusions.
+
+### A/B Test: Monsoon Sale Campaign Creative
+
+Two creative versions of the same campaign were tested:
+- **Version A (Bold design):** 1.92% CTR (115 clicks / 5,994 impressions)
+- **Version B (Minimal design):** 3.57% CTR (122 clicks / 3,413 impressions)
+
+A two-proportion z-test confirmed this difference is statistically 
+significant (z = -4.93, p < 0.0001) — Version B's higher CTR is not 
+due to random chance.
+
+**Recommendation:** Scale Version B as the primary creative across 
+similar campaigns. The minimal design approach outperformed the bold 
+design by nearly 2x in click-through rate.
