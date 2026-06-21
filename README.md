@@ -1,88 +1,84 @@
-# nykaa-customer-intelligence
-### Customer Segmentation (RFM Analysis)
+# 💄 Nykaa Customer Intelligence & Beauty Recommendation System
 
-Using Recency, Frequency, and Monetary scoring, customers were segmented 
-into 5 groups. The distribution is notably polarized: 60% of customers 
-fall into either "Champions" (1,420) or "Lost" (1,530), with comparatively 
-few in the "Needs Attention" middle segment (210).
+An end-to-end e-commerce analytics project simulating a beauty retail 
+platform — covering customer behavior analytics, ad campaign performance, 
+and a product recommendation engine. Built to mirror the SQL-heavy, 
+business-driven analytics work done at companies like Nykaa.
 
-**Key insight:** Customers tend to either become loyal repeat buyers or 
-churn early — there's little gradual drift. This suggests retention 
-strategy should prioritize the early customer lifecycle (first → second 
-purchase) over broad re-engagement campaigns for long-lapsed users.
+## 🎯 Project Overview
 
-**Recommended action:** Prioritize win-back campaigns for the 800 
-"At Risk (High Value)" customers — proven high-spenders showing signs 
-of disengagement — over the larger but lower-value "Lost" segment.
+This project answers three core business questions a retail analytics 
+team would tackle:
 
+1. **Who are our customers, and who's at risk of churning?**
+2. **Which marketing channels actually drive profitable growth?**
+3. **What should we recommend to customers to increase cross-sell?**
 
-### Cohort Retention Analysis
+Each module is self-contained but shares the same underlying dataset — 
+a simulated beauty e-commerce platform with 5,000 customers, 80 products, 
+20,000+ orders, and 70,000+ ad events.
 
-Customers were grouped by signup month and tracked for repeat purchases 
-over time. Across nearly all cohorts, retention drops sharply from 100% 
-(month 0) to ~15-25% by month 1, then remains stable in that band through 
-month 15-20.
+## 📊 Module 1: Customer Behavior Analytics
 
-**Key insight:** Customer churn risk is concentrated almost entirely in 
-the first month after signup — customers who make a second purchase tend 
-to keep returning at a steady ~20% monthly rate long-term, rather than 
-gradually drifting away. This means retention strategy ROI is highest 
-when focused on the 0-to-1-month window (e.g., a second-purchase 
-incentive or onboarding sequence), rather than long-term loyalty programs.
+SQL-driven analysis covering churn detection, RFM segmentation, cohort 
+retention, and repeat purchase rates.
 
-**Note:** The most recent cohorts (Oct-Nov 2025) show unusually high 
-retention (68-85%) due to small sample size — these cohorts have very 
-few customers, so individual repeat purchases swing the percentage 
-heavily. Cohorts with fewer than ~30 customers were excluded from 
-trend conclusions.
+**Key findings:**
+- 84.4% repeat purchase rate
+- Customer base is polarized: 60% fall into either "Champions" or "Lost" 
+  segments, with few in between
+- Churn risk is concentrated almost entirely in the first month after 
+  signup — customers who survive past month 1 retain at a stable ~20% 
+  rate long-term
 
-### A/B Test: Monsoon Sale Campaign Creative
+**Skills demonstrated:** SQL (window functions, CTEs, subqueries), 
+RFM segmentation, cohort analysis, Python/Pandas, data visualization
 
-Two creative versions of the same campaign were tested:
-- **Version A (Bold design):** 1.92% CTR (115 clicks / 5,994 impressions)
-- **Version B (Minimal design):** 3.57% CTR (122 clicks / 3,413 impressions)
+[→ Full Module 1 writeup](./module1_customer_analytics/README.md)
 
-A two-proportion z-test confirmed this difference is statistically 
-significant (z = -4.93, p < 0.0001) — Version B's higher CTR is not 
-due to random chance.
+## 📈 Module 2: Ad Campaign & Marketing Analytics
 
-**Recommendation:** Scale Version B as the primary creative across 
-similar campaigns. The minimal design approach outperformed the bold 
-design by nearly 2x in click-through rate.
+Simulated ad funnel (impressions → clicks → purchases) across 10 
+campaigns, with revenue attribution and A/B testing.
 
+**Key findings:**
+- Search and Influencer campaigns deliver 2.6x–4.4x ROAS; every Banner 
+  campaign loses money (ROAS < 1.0)
+- A/B test confirmed a statistically significant CTR difference between 
+  creative versions (p < 0.0001)
+- Channel selection matters more than creative design — even the 
+  A/B-test "winner" remained unprofitable due to its channel
 
-## Module 2: Ad Campaign & Marketing Analytics
+**Skills demonstrated:** SQL (funnel metrics, attribution joins), 
+statistical hypothesis testing (two-proportion z-test), Python/statsmodels
 
-Simulated a realistic ad funnel (impressions → clicks → purchases) across 
-10 campaigns spanning 4 channels (Search, Influencer, Email, Banner), with 
-ad-driven purchases linked directly to real transaction records for 
-accurate revenue attribution.
+[→ Full Module 2 writeup](./module2_ad_campaign_analytics/README.md)
 
-### Key Findings
+## 🤖 Module 3: Product Recommendation Engine
 
-**1. Channel performance varies dramatically**
-- Search and Influencer campaigns deliver the strongest ROAS (2.6x–4.4x)
-- Every Banner campaign has ROAS below 1.0 — actively losing money
-- Email sits near breakeven (~1.5x)
+Two complementary recommendation approaches: collaborative filtering 
+(purchase behavior) and content-based filtering (product attributes).
 
-**2. A/B Test: Creative Design (Monsoon Sale Campaign)**
-- Version B (Minimal design): 3.57% CTR
-- Version A (Bold design): 1.92% CTR
-- Confirmed statistically significant via two-proportion z-test 
-  (p < 0.0001) — not due to chance
+**Key findings:**
+- Collaborative filtering surfaces cross-category recommendations based 
+  on real co-purchase patterns
+- Content-based filtering stays within category with much sharper 
+  confidence scores (0.999 vs 0.22)
+- A production system would blend both — content-based for new products, 
+  collaborative for established ones
 
-**3. Channel matters more than creative**
-- Even the "winning" A/B variant (Version B) remained unprofitable 
-  (ROAS 0.96) because it was still a Banner campaign — reinforcing 
-  that channel selection is a bigger lever than ad creative
+**Skills demonstrated:** Scikit-learn (cosine similarity), feature 
+engineering (one-hot encoding, normalization), recommendation systems
 
-### Recommendation
-Reallocate the ₹255,000 currently spent on underperforming Banner 
-campaigns toward Search and Influencer channels, which show 2-4x 
-better returns.
+[→ Full Module 3 writeup](./module3_recommendation_engine/README.md)
 
-### Visuals
-![CTR by Campaign](visuals/5_ctr_by_campaign.png)
-![ROAS by Campaign](visuals/6_roas_by_campaign.png)
-![Overall Funnel](visuals/7_overall_funnel.png)
-![A/B Test Result](visuals/8_ab_test_result.png)
+## 🛠️ Tech Stack
+
+| Layer | Tools |
+|---|---|
+| Database | SQLite |
+| Data manipulation | Python, Pandas, NumPy |
+| Statistics/ML | Scikit-learn, Statsmodels |
+| Visualization | Matplotlib, Seaborn |
+
+## 📁 Repository Structure
